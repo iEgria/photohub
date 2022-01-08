@@ -65,7 +65,7 @@
                                                     @csrf
                                                     <div>
                                                         <x-jet-label for="email" class="form-label" value="{{ __('Email') }}" />
-                                                        <x-jet-input id="email" class="form-control" type="email" name="email" :value="old('email')" required autofocus />
+                                                        <x-jet-input id="email" class="form-control" type="text" name="email" :value="old('email')" required autofocus />
                                                     </div>
                                                     <div class="mt-4">
                                                         <x-jet-label for="password" class="form-label" value="{{ __('Password') }}" />
@@ -75,6 +75,8 @@
                                                         <div class="d-flex justify-content-between">
                                                             <span>
                                                                 Belum Punya Akun? <a href="{{ route('register') }}">Daftar Sekarang</a>
+                                                                <br>
+                                                                <small>Lupa Password? <a href="{{ url('forgot-password') }}">Reset</a></small>
                                                             </span>
                                                             <button type="submit" class="btn btn-primary">Masuk</button>
                                                         </div>

@@ -85,7 +85,7 @@
                                                     <div class="flex items-center justify-end mt-4">
                                                         <div class="d-flex justify-content-between">
                                                             <span>
-                                                                Belum Punya Akun? <a href="{{ route('register') }}">Daftar Sekarang</a>
+                                                                Sudah Punya Akun? <a href="{{ route('login') }}">Masuk</a>
                                                             </span>
                                                             <button type="submit" class="btn btn-primary">Daftar</button>
                                                         </div>

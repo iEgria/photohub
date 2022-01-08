@@ -173,7 +173,7 @@
                             <div class="position-relative doctor-inner-box">
                                 <div class="doctor-profile">
                                     <div class="doctor-img">
-                                        <img src="{{ 'https://jasalapangan.com/upload/' . $foto->foto }}" alt="doctor-image" class="img-fluid w-100 rounded shadow">
+                                        <img src="{{ asset($foto->foto) }}" alt="Upload image" class="img-fluid w-100 rounded shadow">
                                         <div class="d-flex justify-content-between">
                                             <div>
                                                 {{ $foto->judul }}

@@ -43,9 +43,12 @@
                         </a>
                         <ul class="nav">
                             <li>
-                                <div class="gradient-button">
-                                    <a href="{{ route('home') }}"><i class="fa fa-sign-out-alt"></i> Keluar</a>
-                                </div>
+                                <form action="{{ route('logout') }}" method="post">
+                                    @csrf
+                                    <button class="btn-sm btn-warning btn-sm">
+                                        <i class="fa fa-sign-out-alt"></i> Keluar
+                                    </button>
+                                </form>
                             </li>
                         </ul>
                         <a class="menu-trigger">
@@ -73,10 +76,10 @@
                                 <div class="doctor-profile">
                                     <div class="doctor-img">
                                         <div style="position: absolute; border-radius: 0px 0px 20px 0px;" class="bg-white p-2">
-                                            <i class="fa fa-pencil-alt text-warning" style="cursor: pointer;" onclick="edit('{{ $foto->id }}', '{{ $foto->judul }}', `{{ 'https://jasalapangan.com/upload/' . $foto->foto }}`)"></i> &nbsp;
+                                            <i class="fa fa-pencil-alt text-warning" style="cursor: pointer;" onclick="edit('{{ $foto->id }}', '{{ $foto->judul }}', `{{ asset($foto->foto) }}`)"></i> &nbsp;
                                             <i class="fa fa-trash text-danger" style="cursor: pointer;" onclick="hapus(`{{ route('dashboard-delete', $foto->id) }}`)"></i>
                                         </div>
-                                        <img src="{{ 'https://jasalapangan.com/upload/' . $foto->foto }}" class="img-fluid w-100 rounded shadow">
+                                        <img src="{{ asset($foto->foto) }}" class="img-fluid w-100 rounded shadow">
                                         {{ $foto->judul }}
                                     </div>
                                 </div>

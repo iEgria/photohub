@@ -18,7 +18,7 @@ class PhotosController extends Controller
     public function index()
     {
         return view('dashboard', [
-            'fotos' => Foto::with('user')->get()
+            'fotos' => Auth::user()->role == 'A' ? Foto::with('user')->get() : Foto::with('user')->where('users_id', Auth::user()->id)->get()
         ]);
     }
 
@@ -30,7 +30,7 @@ class PhotosController extends Controller
         ]);
 
         $requestData = $request->all();
-        $requestData['foto'] = $request->file('foto')->store('public/images');
+        $requestData['foto'] = str_replace('public', 'storage', $request->file('foto')->store('public/images'));
         $requestData['users_id'] = Auth::user()->id;
 
         Foto::create($requestData);
@@ -46,7 +46,7 @@ class PhotosController extends Controller
 
         $requestData = $request->all();
         if ($request->hasFile('foto')) {
-            $requestData['foto'] = $request->file('foto')->store('public/images');
+            $requestData['foto'] = str_replace('public', 'storage', $request->file('foto')->store('public/images'));
         }
         Foto::findOrFail($request->post('foto_id'))->update($requestData);
         return redirect()->route('dashboard')->with('success', ' Data telah diperbaharui!');
